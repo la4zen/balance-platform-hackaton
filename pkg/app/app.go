@@ -13,6 +13,7 @@ func Run() {
 	e := echo.New()
 	e.Use(middleware.Logger())
 	e.Use(middleware.CORS())
+	e.Static("/img", "static")
 	e.POST("/login", service.Login)
 	e.PUT("/register", service.Register)
 	e.Logger.Fatal(e.Start(":8080"))
