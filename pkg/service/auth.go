@@ -2,6 +2,7 @@ package service
 
 import (
 	"github.com/la4zen/balance-platform-hackaton/pkg/models"
+	"github.com/la4zen/balance-platform-hackaton/pkg/utils"
 	"github.com/labstack/echo"
 )
 
@@ -14,8 +15,13 @@ func (s *Service) Register(c echo.Context) error {
 	if err := s.Store.CreateUser(user); err != nil {
 		return err
 	}
-	// TODO : generate tokens
-	return c.NoContent(200)
+	token, err := utils.GenerateToken(user.ID)
+	if err != nil {
+		return echo.ErrInternalServerError
+	}
+	return c.JSON(200, echo.Map{
+		"token": token,
+	})
 }
 
 func (s *Service) Login(c echo.Context) error {
@@ -27,6 +33,11 @@ func (s *Service) Login(c echo.Context) error {
 	if err := s.Store.GetUser(user); err != nil {
 		return err
 	}
-	// TODO : generate tokens
-	return c.NoContent(200)
+	token, err := utils.GenerateToken(user.ID)
+	if err != nil {
+		return echo.ErrInternalServerError
+	}
+	return c.JSON(200, echo.Map{
+		"token": token,
+	})
 }
