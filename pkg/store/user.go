@@ -26,3 +26,8 @@ func (s *Store) CreateUser(u *models.User) error {
 	r = s.DB.Create(&u)
 	return r.Error
 }
+
+func (s *Store) UpdateUser(u *models.User) error {
+	r := s.DB.Save(&u)
+	return r.Error
+}

@@ -18,7 +18,7 @@ func NewStore() *Store {
 	if err != nil {
 		log.Fatal(err)
 	}
-	db.AutoMigrate(&models.User{})
+	db.AutoMigrate(&models.User{}, &models.Task{}, &models.TaskProgress{})
 	return &Store{
 		DB: db,
 	}
