@@ -9,9 +9,7 @@
                 <button class="search-button">
                     <img class="loupe" src="../assets/loupe.svg" alt="">
                 </button>
-                <form action="#">
-                    <input placeholder="Найти" type="text" name="" id="">
-                </form>
+                    <input placeholder="Найти" type="text" name="" id="" v-on:input="find" v-model="query">
             </div>
             <div class="rating-tabs">
                 <button class="personal btnTab" type="button">
@@ -24,8 +22,7 @@
                 </button>
             </div>
             <div class="rating-list">
-               
-                    <div class="rate-line" v-for="(ratingItem,index) of ratingList" :key="index">
+                    <div class="rate-line" v-for="(ratingItem,index) of founded" :key="index">
                         <!-- <img src="ratingItem.place"> -->
                         <p>{{ratingItem.place}}</p>
                         <img class="photo" :src="img" alt="">
@@ -44,59 +41,67 @@ export default {
     components:{
         
     },
+    methods : {
+        find : function() {
+            this.founded = []
+            this.ratingList.forEach(el => {
+                if (el.name.toLowerCase().includes(this.query.toLowerCase())) this.founded.push(el)
+            });
+        }
+    },
     props:['visibility'],
     data(){
         return{
+            query : "",
             img: 'https://via.placeholder.com/50',
+            founded : [],
             ratingList:[
                 {
                     place: 1,
                     name: 'Lorem',
                     points: 10000
-
-                },
-                {
+                },{
                     place: 2,
-                    name: 'Lorem',
-                    points: 10000},
-                {
+                    name: 'sdfgsdfg',
+                    points: 10000
+                },{
                     place: 3,
-                    name: 'Lorem',
+                    name: 'fdg',
                     points: 10000
-                },
-                {
+                },{
                     place: 4,
-                    name: 'Lorem',
+                    name: 'gdf',
                     points: 10000
-                },
-                {
+                },{
                     place: 5,
-                    name: 'Lorem',
+                    name: 'dfgsadfg',
+                    points: 10000
+                },{
+                    place: 6,
+                    name: 'gsdfgsdfg',
+                    points: 10000
+                }, {
+                    place: 7,
+                    name: 'wgertgdfgsdfg',
+                    points: 10000
+                },{
+                    place: 8,
+                    name: 'asdgfg4wgwdfg',
+                    points: 10000
+                },{
+                    place: 9,
+                    name: 'gsdfg',
+                    points: 10000
+                },{
+                    place: 10,
+                    name: 'Lwdfgsdfgorem',
                     points: 10000
                 },
-                {
-                    place: 6,
-                    name: 'Lorem',
-                    points: 10000},
-                    {
-                    place: 7,
-                    name: 'Lorem',
-                    points: 10000},
-                    {
-                    place: 8,
-                    name: 'Lorem',
-                    points: 10000},
-                    {
-                    place: 9,
-                    name: 'Lorem',
-                    points: 10000},
-                    {
-                    place: 10,
-                    name: 'Lorem',
-                    points: 10000},
-                
             ]
         }
+    },
+    mounted : function() {
+        this.founded = this.ratingList
     }
 }
 </script>
