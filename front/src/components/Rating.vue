@@ -14,90 +14,55 @@
                 </form>
             </div>
             <div class="rating-tabs">
-                <button class="personal btnTab" type="button">
-                    <p>Персональный</p>
-                    <img class="icon" src="../assets/person.png" alt="">
-                </button>
-                <button class="command btnTab" type="button">
-                    <p>Командный</p>
-                    <img class="icon" src="../assets/command.png" alt="">
+                <button @click="test(tab)" :class="[tab.class, {active: selected === tab}]" class="btnTab" v-for="(tab,index) in tabs" :key="index">
+                    <p>{{tab.text}}</p>
+                    <img class="icon" :src="tab.img" alt="">
                 </button>
             </div>
-            <div class="rating-list">
-               
-                    <div class="rate-line" v-for="(ratingItem,index) of ratingList" :key="index">
-                        <!-- <img src="ratingItem.place"> -->
-                        <p>{{ratingItem.place}}</p>
-                        <img class="photo" :src="img" alt="">
-                        <p>{{ratingItem.name}}</p>
-                        <p>{{ratingItem.points}}</p>
-                    </div>
-            </div>
+            <component :is="selected"></component>
         </div>
     </div>
 </template>
 
 <script>
-
+import Personal from '../components/TabPersonal.vue'
+import Command from '../components/TabCommand.vue'
 export default {
     name: 'Rating',
     components:{
-        
+        Personal,
+        Command
     },
-    props:['visibility'],
+    props:['visibility','img'],
     data(){
         return{
-            img: 'https://via.placeholder.com/50',
-            ratingList:[
+            selected: 'Personal',
+            tabs:[
                 {
-                    place: 1,
-                    name: 'Lorem',
-                    points: 10000
+                    text: 'Персональный',
+                    class: 'personal',
+                    img: require('../assets/person.png')
+                },
+                {
+                    text: 'Командный',
+                    class: 'command',
+                    img: require('../assets/command.png')
+                }
+            ],
+        }
+    },
 
-                },
-                {
-                    place: 2,
-                    name: 'Lorem',
-                    points: 10000},
-                {
-                    place: 3,
-                    name: 'Lorem',
-                    points: 10000
-                },
-                {
-                    place: 4,
-                    name: 'Lorem',
-                    points: 10000
-                },
-                {
-                    place: 5,
-                    name: 'Lorem',
-                    points: 10000
-                },
-                {
-                    place: 6,
-                    name: 'Lorem',
-                    points: 10000},
-                    {
-                    place: 7,
-                    name: 'Lorem',
-                    points: 10000},
-                    {
-                    place: 8,
-                    name: 'Lorem',
-                    points: 10000},
-                    {
-                    place: 9,
-                    name: 'Lorem',
-                    points: 10000},
-                    {
-                    place: 10,
-                    name: 'Lorem',
-                    points: 10000},
-                
-            ]
+    methods: {
+        test(tab) {
+            if (tab.class === 'personal') this.selected = 'Personal';
+            else this.selected = 'Command';
         }
     }
+    // computed: {
+    //       currentTabComponent: function() {
+    //         return "tab-" + this.currentTab.toLowerCase();
+    //       }
+    //     }
 }
 </script>
 
@@ -134,7 +99,6 @@ export default {
     }
 
     form {
-        /* padding: 0 25px; */
         box-sizing: border-box;
         text-align: center;
     }
@@ -166,40 +130,11 @@ export default {
         margin-bottom: 15px;
     }
 
-    .personal {
-        background: #FF8562;
-        color: #FFFCFC;
-        display: flex;
-        justify-content: center;
-        border-radius: 4px 0 0 4px;
-        border-right: 2px solid #C95A0A;
-    }
-
-    .command {
-        background: #FFCC9A;
-        color: #DC7905;
-        display: flex;
-        justify-content: center;
-        border-radius: 0 4px 4px 0;
-    }
-
     .rate-line {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         margin: 0 15px;
         margin-bottom: 10px;
-    }
-
-    .rating-list {
-        max-height: 360px;
-        overflow-y: scroll;
-        margin-bottom: 15px;
-    }
-
-    .photo {
-        width: 50px;
-        height: 50px;
-        border-radius: 50px;
     }
 
     .icon {

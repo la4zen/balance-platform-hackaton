@@ -2,15 +2,15 @@ import Vue from 'vue'
 import App from './App.vue'
 import vuescroll from 'vuescroll';
 
-Vue.use(vuescroll, {
-  ops: {
-    vuescroll: {},
-    scrollPanel: {},
-    rail: {},
-    bar: {}
-  },
-  name: 'myScroll'
-});
+// Vue.use(vuescroll, {
+//   ops: {
+//     vuescroll: {},
+//     scrollPanel: {},
+//     rail: {},
+//     bar: {}
+//   },
+//   name: 'myScroll'
+// });
 
 // Vue.prototype.$vuescrollConfig = {
 //   bar: {
@@ -19,6 +19,8 @@ Vue.use(vuescroll, {
 // };
 
 Vue.config.productionTip = false
+
+Vue.use(vuescroll)
 
 new Vue({
   render: h => h(App),

@@ -1,5 +1,5 @@
 <template>
-    <div class="header-menu" v-show="visibility">
+    <div class="header-menu" v-show="visibility" @click="close">
         <ul v-for="(menuli, idx) of menulist" :key="idx">
             <li>{{ menuli }}</li>
         </ul>
@@ -13,6 +13,12 @@ export default {
     data(){
         return {
             menulist: ['Мой профиль', 'Мои награды', 'Моя статистика']
+        }
+    },
+
+    methods: {
+        close(e) {
+            this.$emit('close', e)
         }
     }
 }

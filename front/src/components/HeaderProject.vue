@@ -6,13 +6,16 @@
             <img src="https://via.placeholder.com/60" alt="">
             <p>Имя</p>
           </button>
-        <header-menu :visibility="showMenu"></header-menu>
+        <header-menu @close="closeMenu" :visibility="showMenu"></header-menu>
         <div class="right-item">
           <div class="coins">
             <img src="../assets/2.svg" alt="">
             <p>100</p>
           </div>
-          <button-item>Магазин</button-item>
+          <button-item @click="showShop = !showShop">Магазин</button-item>
+          <shop :visibility="showShop" @closeDialog="test">
+            <!-- <h3 v-if="!cartItems.length">Товары скоро появятся</h3> -->
+          </shop>
         </div>
       </div>
     </div>
@@ -20,21 +23,35 @@
 </template>
 
 <script>
+import Shop from '../components/HeaderShop.vue'
 import HeaderMenu from '../components/HeaderMenu.vue'
 import ButtonItem from '../components/ButtonItem.vue'
 
 export default {
   name: 'HeaderProject',
   props: [
-    'visibility'
   ],
   components: {
     ButtonItem,
-    HeaderMenu
+    HeaderMenu,
+    Shop
   },
   data(){
     return {
-      showMenu: false
+      visibility: false,
+      showMenu: false,
+      showShop: false,
+      // cartItems: []
+    }
+  },
+  methods: {
+    test() {
+      console.log('click');
+      this.showShop = false
+    },
+    closeMenu(e) {
+      if (e.target.className === 'he')
+      console.log(e.target.className);
     }
   }
 }
