@@ -25,42 +25,42 @@ export default {
             img: 'https://via.placeholder.com/50',
             ratingList:[
                 {
-                    name: 'fggjkfdfghjkjhbgfdfvgbh',
+                    name: 'Андрей',
                     points: 10000
                 },
                 {
-                    name: 'fghgf',
+                    name: 'Дарья',
                     points: 10000},
                 {
-                    name: 'ytrew',
+                    name: 'Мария',
                     points: 10000
                 },
                 {
-                    name: 'nbvcx',
+                    name: 'Олег',
                     points: 10000
                 },
                 {
-                    name: 'jhgfd',
+                    name: 'Филипп',
                     points: 10000
                 },
                 {
-                    name: 'gfds',
+                    name: 'Кристина',
                     points: 10000
                 },
                 {
-                    name: 'iu7y6tre',
+                    name: 'Максим',
                     points: 10000
                 },
                 {
-                    name: 'kjuytr',
+                    name: 'Дмитрий',
                     points: 10000
                 },
                 {
-                    name: ',mnbvc',
+                    name: 'Вячеслав',
                     points: 10000
                 },
                 {
-                    name: 'trfdsa',
+                    name: 'Анна',
                     points: 10000
                 },
                 

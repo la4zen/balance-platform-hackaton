@@ -2,14 +2,14 @@
   <header class="header-project">
     <div class="container">
       <div class="header-items">
-          <button class="logo" @click="showMenu = !showMenu">
-            <img src="https://via.placeholder.com/60" alt="">
-            <p>Имя</p>
+          <button class="logo" @click="showAccount = !showAccount">
+            <img src="../assets/lk.png" alt="">
+            <p>Мария</p>
           </button>
-        <header-menu @close="closeMenu" :visibility="showMenu"></header-menu>
+          <account :visibility="showAccount" @closeDialog="closeAccount"></account>
         <div class="right-item">
           <div class="coins">
-            <img src="../assets/2.svg" alt="">
+            <img src="../assets/Stamp.png" alt="">
             <p>100</p>
           </div>
           <button-item @click="showShop = !showShop">Магазин</button-item>
@@ -24,7 +24,7 @@
 
 <script>
 import Shop from '../components/HeaderShop.vue'
-import HeaderMenu from '../components/HeaderMenu.vue'
+import Account from '../components/Account.vue'
 import ButtonItem from '../components/ButtonItem.vue'
 
 export default {
@@ -33,28 +33,29 @@ export default {
   ],
   components: {
     ButtonItem,
-    HeaderMenu,
+    Account,
     Shop
   },
   data(){
     return {
       visibility: false,
-      showMenu: false,
       showShop: false,
-      // cartItems: []
+      showAccount: false,
     }
   },
   methods: {
+    closeAccount(){
+      this.showAccount = false
+    },
     test() {
-      console.log('click');
       this.showShop = false
     },
     closeMenu(e) {
-      if (e.target.className === 'he')
-      console.log(e.target.className);
-    }
+      if (e.target.className === 'he') console.log(e.target.className);
+    },
   }
 }
+
 </script>
 
 <style scoped>
@@ -64,7 +65,7 @@ export default {
     right: 0;
     left: 0;
     height: 80px;
-    background: #FF8562;
+    background: #5b1b0898;
   }
 
   .container{
@@ -81,6 +82,8 @@ export default {
   }
 
   .logo img{
+    width: 60px;
+    height: 60px;
     border-radius: 50px;
     margin-right: 15px;
   }
@@ -101,13 +104,20 @@ export default {
 
   .coins {
     display: flex;
+    align-items: center;
     margin-right: 36px;
+  }
+
+  .coins img {
+    width: 50px;
+    height: 45px;
   }
 
   .coins p {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 800;
     color: white;
     margin-left: 10px;
+    color: rgb(255, 196, 0);
   }
 </style>

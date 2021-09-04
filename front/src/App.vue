@@ -1,14 +1,15 @@
 <template>
   <div id="app">
     <HeaderProject/>
-    <!-- <header-menu></header-menu> -->
+    <main-project></main-project>
     <FooterProject/>
   </div>
 </template>
 
 <script>
+// import axios from "axios";
 import FooterProject from './components/FooterProject.vue'
-// import HeaderMenu from './components/HeaderMenu.vue'
+import MainProject from './components/MainProject.vue'
 import HeaderProject from './components/HeaderProject.vue'
 
 export default {
@@ -16,6 +17,7 @@ export default {
   components: {
     HeaderProject,
     FooterProject,
+    MainProject
     // HeaderMenu
   }
 }
@@ -25,7 +27,7 @@ export default {
   body {
     margin: 0;
     padding: 0;
-    font-family: Roboto;
+    font-family: 'Roboto Slab', serif;
   }
 
   .container{

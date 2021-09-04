@@ -2,20 +2,22 @@
         <div class="shop" v-show="visibility">
             <h2 class="shop-head">Магазин</h2>
             <button class="cross" @click="close()">
-                <img src="../assets/close.svg" alt="">
+                <img src="../assets/Rectangle 24.png" alt="">
             </button>
+            <shop-items></shop-items>
         </div>
 </template>
 
 <script>
+import ShopItems from './ShopItems.vue';
 
 // import ClickOutside from 'vue-click-outside'
 export default {
+  components: { ShopItems },
     name: 'Shop',
     props:['visibility'],
     data(){
         return{
-            cartItems: [],
         }
     },
     methods:{
@@ -34,7 +36,7 @@ export default {
         right: 170px;
         width: 1186px;
         height: 560px;
-        background: lightblue;
+        background: #FFFCFC;
     }
 
     .shop-head {
@@ -44,9 +46,9 @@ export default {
         border-radius: 4px 4px 0 0;
         width: 100%;
         height: 55px;
-        background: #6980d3;
+        background: #eb9969de;
         padding-top: 10px;
-        color: white;
+        color: #f0eeee;
         box-sizing: border-box;
     }
 

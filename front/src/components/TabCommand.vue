@@ -1,10 +1,18 @@
 <template>
     <div class="rating-list">
         <div class="rate-line" v-for="(ratingItem,index) of ratingList" :key="index">
-            <p>{{index + 1}}</p>
-            <img class="photo" :src="img" alt="">
-            <p>{{ratingItem.name}}</p>
-            <p>{{ratingItem.points}}</p>
+            <div class="rating-item">
+                <p>{{index + 1}}</p>
+            </div>
+            <div class="rating-item">
+                <img class="photo" :src="img" alt="">
+            </div>
+            <div class="name">
+                <p>{{ratingItem.name}}</p>
+            </div>
+            <div class="rating-item">
+                <p>{{ratingItem.points}}</p>
+            </div>
         </div>
     </div>
 </template>
@@ -17,43 +25,31 @@ export default {
             img: 'https://via.placeholder.com/50',
             ratingList:[
                 {
-                    name: 'fggjkf',
+                    name: 'Ящерицы',
                     points: 9000
 
                 },
                 {
-                    name: 'fghgf',
+                    name: 'Анонимусы',
                     points: 9000},
                 {
-                    name: 'ytrew',
+                    name: 'Лягушки',
                     points: 9000
                 },
                 {
-                    name: 'nbvcx',
+                    name: 'РикАнутые',
                     points: 9000
                 },
                 {
-                    name: 'jhgfd',
+                    name: 'Котики',
                     points: 9000
                 },
                 {
-                    name: 'gfds',
+                    name: 'ПростоТа',
                     points: 9000
                 },
                 {
-                    name: 'iu7y6tre',
-                    points: 9000
-                },
-                {
-                    name: 'kjuytr',
-                    points: 9000
-                },
-                {
-                    name: ',mnbvc',
-                    points: 9000
-                },
-                {
-                    name: 'trfdsa',
+                    name: 'ИСИТко',
                     points: 9000
                 },
                 
@@ -71,8 +67,8 @@ export default {
     }
 
     .command {
-        background: #FFCC9A;
-        color: #DC7905;
+        background: #FF8562;
+        color: #DCF5FF;
         display: flex;
         justify-content: center;
         border-radius: 0 4px 4px 0;

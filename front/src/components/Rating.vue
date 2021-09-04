@@ -1,9 +1,9 @@
 <template>
-    <div class="rating" v-show="visibility">
-        <div class="rating-head">
-            <h3>Топ-10</h3>
-            <img src="../assets/Star.png" alt="">
-        </div>
+    <div class="rating" v-show="visibility" @click="showRating = !showRating">
+        <h3 class="rating-head">
+            Рейтинг
+            <!-- <img src="../assets/Star.png" alt=""> -->
+        </h3>
         <div class="rating-content">
             <div class="rating-search">
                 <button class="search-button">
@@ -14,7 +14,7 @@
                 </form>
             </div>
             <div class="rating-tabs">
-                <button @click="test(tab)" :class="[tab.class, {active: selected === tab}]" class="btnTab" v-for="(tab,index) in tabs" :key="index">
+                <button @click="test(tab)" :class="[tab.class, {active: tab.class === selected}]" class="btnTab" v-for="(tab,index) in tabs" :key="index">
                     <p>{{tab.text}}</p>
                     <img class="icon" :src="tab.img" alt="">
                 </button>
@@ -36,7 +36,8 @@ export default {
     props:['visibility','img'],
     data(){
         return{
-            selected: 'Personal',
+            showRating: false,
+            selected: 'personal',
             tabs:[
                 {
                     text: 'Персональный',
@@ -54,22 +55,18 @@ export default {
 
     methods: {
         test(tab) {
-            if (tab.class === 'personal') this.selected = 'Personal';
-            else this.selected = 'Command';
+            if (tab.class === 'personal'){ 
+                this.selected = 'personal';
+            } else this.selected = 'command';
         }
     }
-    // computed: {
-    //       currentTabComponent: function() {
-    //         return "tab-" + this.currentTab.toLowerCase();
-    //       }
-    //     }
 }
 </script>
 
 <style>
     .rating{
         position: absolute;
-        border-radius:0 0 4px 4px;
+        border-radius:4px;
         bottom: 70px;
         width: 440px;
         background: #FFFCFC;
@@ -79,11 +76,13 @@ export default {
     .rating-head {
         display: flex;
         justify-content: center;
-        color: #FD5525;
+        color: #f0eeee;
         margin: 0;
+        padding: 15px 0;
         font-weight: 800;
         font-size: 20px;
-        background: #5ED3BB;
+        border-radius: 4px 4px 0 0;
+        background: #eb9969de;
         box-shadow: 0px 4px 4px rgb(0, 0, 0, 0.12);
     }
 
@@ -150,5 +149,9 @@ export default {
     .loupe {
         width: 20px;
         margin-left: 20px;
+    }
+
+    .active {
+         background: #0db3f5;
     }
 </style>

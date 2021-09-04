@@ -14,9 +14,9 @@ export default {
     .btn{
         font-size: 18px;
         height: 45px;
-        color: white;
-        background: #EF3838;
-        border: 2px solid #ef3839;
+        color: #DCF5FF;
+        background: #00abefce;
+        border: 2px solid #1487E3;
         border-radius: 6px;
         padding: 0 15px;
         box-sizing: border-box;
