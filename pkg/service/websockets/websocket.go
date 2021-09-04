@@ -33,6 +33,7 @@ func (h *Handler) WSHandler(c echo.Context) error {
 				return
 			}
 			switch {
+
 			}
 		}
 	}()

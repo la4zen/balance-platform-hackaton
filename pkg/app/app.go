@@ -12,19 +12,22 @@ import (
 
 func Run() {
 	store := store.NewStore()
-	service := service.NewService(store)
+	s := service.NewService(store)
 	e := echo.New()
 	e.Use(middleware.Logger())
 	e.Use(middleware.CORS())
 	e.Static("/img", "static")
-	e.POST("/login", service.Login)
-	e.PUT("/register", service.Register)
+	e.POST("/login", s.Login)
+	e.PUT("/register", s.Register)
 	r := e.Group("/api", middleware.JWT(utils.JWT_KEY), func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			c.Set("user", &models.User{ID: c.Get("user").(*jwt.Token).Claims.(*models.Claims).ID})
 			return next(c)
 		}
 	})
-	r.GET("/accesible", service.Accesible)
+	r.PATCH("/update_profile", s.UpdateProfile)
+	r.GET("/ws", s.WSHandler.WSHandler)
+	r.GET("/accesible", s.Accesible)
+	r.GET("/profiles/:id", s.GetProfile)
 	e.Logger.Fatal(e.Start("0.0.0.0:8000"))
 }
