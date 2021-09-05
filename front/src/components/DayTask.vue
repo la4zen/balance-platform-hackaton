@@ -21,12 +21,12 @@ export default {
         return{
             tasks: [
                 {
-                    competence: 'Компетенция I',
+                    competence: 'Компетенция II',
                     class: 'important',
                     coins: 30
                 },
                 {
-                    competence: 'Компетенция II',
+                    competence: 'Компетенция I',
                     class: 'urgent',
                     coins: 50
                 },
